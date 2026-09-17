@@ -1,0 +1,10 @@
+# bottom up, optimal
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+        a, b = cost[n-2], cost[n-1]
+
+        for step in range(n-3, -1, -1):
+            a, b = cost[step] + min(a, b), a
+        
+        return min(a, b)
